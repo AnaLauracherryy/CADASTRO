@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela com Tabelas de gerenciamento</title>
+
+    <style>
+          h1 {
+            font-size: 60px;
+            font-weight: bold;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bb217b;
+            border-radius: 4px;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border: 1px solid #bb217b;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #ae21b3;
+        }
+
+
+
+
+
+
+        .delete-btn {
+            background-color: #fd0000;
+            color: white;
+        }
+
+        .edit-btn {
+            background-color: #19ee20;
+            color: white;
+        }
+
+        .status-btn {
+            background-color: #ffe96f;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff0000;
+        }
+
+        .edit-btn:hover {
+            background-color: #3aff44;
+        }
+
+        .status-btn:hover {
+            background-color: #ffed63;
+        }
+    
+
+      
+    </style>
+
+
+
+    <script>
+        function excluirLinha(event) {
+            const linha = event.target.closest('tr');
+            if (confirm("Tem certeza que deseja excluir esta tarefa?")) {
+                linha.remove();
+            }
+        }
+
+        function alterarLinha(event) {
+            const linha = event.target.closest('tr');
+            const nome = linha.cells[1].textContent; 
+            const descricao = linha.cells[3].textContent;  
+
+          
+        }
+
+        function alterarStatus(event) {
+            const linha = event.target.closest('tr');
+            const status = linha.cells[4].textContent;  
+            
+        
+            const novoStatus = prompt("Alterar status", status);
+
+            if (novoStatus) {
+                linha.cells[4].textContent = novoStatus;  
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>gerenciamento de tarefas</h1>
+
+    <label for="opcao">Escolha uma opção:</label>
+    <select id="opcao" name="opcao" onchange="atualizarTabela()">
+        <option value="opcao1">Opção 1</option>
+        <option value="opcao2">Opção 2</option>
+        <option value="opcao3">Opção 3</option>
+    </select>
+
+    <hr>
+
+    <table boder="1">
+        <thead>
+            <tr>
+                <th>setor</th>
+                <th>nome</th>
+                <th>prioridade</th>
+                <th>descrição</th>
+                <th>status</th>
+                <th>usuário Código</th>
+                <th>ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>META AI</td>
+                <td>ana laura</td>
+                <td>Alta</td>
+                <td>Concluir a implementação do sistema de login</td>
+                <td>Em andamento</td>
+                <td>1</td>
+                <td class="actions">
+                   
+                    <button class="delete-btn" onclick="excluirLinha(event)">Excluir</button>
+                    <button class="status-btn" onclick="alterarStatus(event)">Alterar Status</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Financeiro</td>
+                <td>geovanna</td>
+                <td>Média</td>
+                <td>Verificar relatórios financeiros do mês</td>
+                <td>Pendente</td>
+                <td>2</td>
+                <td class="actions">
+                    <button class="delete-btn" onclick="excluirLinha(event)">Excluir</button>
+                    <button class="status-btn" onclick="alterarStatus(event)">Alterar Status</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Programação</td>
+                <td>thatty</td>
+                <td>Mínima</td>
+                <td>Analisar erros de programação</td>
+                <td>Ativo</td>
+                <td>3</td>
+                <td class="actions">
+                  
+                    <button class="delete-btn" onclick="excluirLinha(event)">Excluir</button>
+                    <button class="status-btn" onclick="alterarStatus(event)">Alterar Status</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

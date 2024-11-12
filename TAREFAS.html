@@ -1,0 +1,97 @@
+*<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Tarefa</title>
+    <style>
+        h1 {
+            font-size: 60px;
+            font-weight: bold;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bb217b;
+            border-radius: 4px;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border: 1px solid #bb217b;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #ae21b3;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Cadastro de Tarefa</h2>
+<form id="formTarefa" action="cadastrar_tarefa.php" method="POST">
+    <label for="tar_setor">Setor:</label>
+    <input type="text" id="tar_setor" name="tar_setor" required>
+
+    <label for="tar_prioridade">Prioridade:</label>
+    <input type="text" id="tar_prioridade" name="tar_prioridade" required>
+
+    <label for="tar_descricao">Descrição:</label>
+    <textarea id="tar_descricao" name="tar_descricao" required></textarea>
+
+    <label for="tar_status">Status:</label>
+    <input type="text" id="tar_status" name="tar_status" required>
+
+    <label for="usu_codigo">Nome do Usuário (Código):</label>
+    <input type="number" id="usu_codigo" name="usu_codigo" required>
+
+    <input type="submit" value="Cadastrar">
+</form>
+
+<div id="successMessage" class="success-message" style="display: none;">
+    Redirecionando para o gerenciamento...
+</div>
+
+<script>
+    function showSuccessMessage(event) {
+        event.preventDefault(); 
+        document.getElementById('successMessage').style.display = 'block';
+        
+        setTimeout(function() {
+            window.location.href = 'gerenciamentoo.html'; 
+        }, 3000);
+    }
+
+    document.getElementById('formTarefa').addEventListener('submit', showSuccessMessage);
+</script>
+
+</body>
+</html>*
